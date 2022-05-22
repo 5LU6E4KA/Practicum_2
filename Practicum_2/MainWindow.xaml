@@ -1,0 +1,84 @@
+﻿<Window x:Class="Practicum_2.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Practicum_2"
+        mc:Ignorable="d"
+        Title="220_Виталев_Числовой массив" Height="570" Width="930"
+        SizeToContent="WidthAndHeight" ResizeMode="NoResize" Background ="AntiqueWhite">
+    <Grid>
+        <DataGrid Name="MainDataGrid" RowHeight="25" ItemsSource="{Binding}" AutoGenerateColumns="False" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="280" MinHeight="280" MinWidth="320" Margin="10,19,589,255">
+            <DataGrid.Columns>
+                <DataGridTextColumn Width="30" CanUserReorder="False" CanUserResize="False" CanUserSort="False" Header="0" Binding="{Binding [0]}"/>
+                <DataGridTextColumn Width="30" CanUserReorder="False" CanUserResize="False" CanUserSort="False" Header="1" Binding="{Binding [1]}"/>
+                <DataGridTextColumn Width="30" CanUserReorder="False" CanUserResize="False" CanUserSort="False" Header="2" Binding="{Binding [2]}"/>
+                <DataGridTextColumn Width="30" CanUserReorder="False" CanUserResize="False" CanUserSort="False" Header="3" Binding="{Binding [3]}"/>
+                <DataGridTextColumn Width="30" CanUserReorder="False" CanUserResize="False" CanUserSort="False" Header="4" Binding="{Binding [4]}"/>
+                <DataGridTextColumn Width="30" CanUserReorder="False" CanUserResize="False" CanUserSort="False" Header="5" Binding="{Binding [5]}"/>
+                <DataGridTextColumn Width="30" CanUserReorder="False" CanUserResize="False" CanUserSort="False" Header="6" Binding="{Binding [6]}"/>
+                <DataGridTextColumn Width="30" CanUserReorder="False" CanUserResize="False" CanUserSort="False" Header="7" Binding="{Binding [7]}"/>
+                <DataGridTextColumn Width="30" CanUserReorder="False" CanUserResize="False" CanUserSort="False" Header="8" Binding="{Binding [8]}"/>
+                <DataGridTextColumn Width="30" CanUserReorder="False" CanUserResize="False" CanUserSort="False" Header="9" Binding="{Binding [9]}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button x:Name="buttonrandom" Content="Обновить" ToolTip="Получить новые значения в матрице" Click="GetRandom_Button_Click" MinHeight="20" MinWidth="200" Margin="76,310,654,195" FontWeight ="Medium" FontSize="16" FontStyle="Italic" />
+        <Button x:Name="overwrittingbutton" Content="Получить результат" ToolTip="Если поменяешь значения в матрице, то нужно нажать на эту кнопку" Click="Set_Values_Click" MinHeight="45" MinWidth="300" Margin="26,375,604,134" FontSize="16" FontWeight="Medium" FontStyle="Italic" />
+
+        <Label Content="Главная диагональ" FontSize="16" FontWeight ="Medium" HorizontalContentAlignment="Center" Margin="380,25,317,498" FontStyle="Italic" />
+        <Label Content="Сумма: " Margin="365,62,510,462" />
+        <Label Content="Мин: " Margin="365,98,510,431" />
+        <Label Content="Макс: " Margin="365,135,510,390" />
+
+        <TextBox Name="maindiagonal_amount" IsReadOnly="True" Height="30" Margin="440,61,350,463" RenderTransformOrigin="0.507,-0.066"/>
+        <TextBox Name="maindiagonal_min" IsReadOnly="True" Height="30" Margin="440,98,350,426" RenderTransformOrigin="0.236,0.301"/>
+        <TextBox Name="maindiagonal_max" IsReadOnly="True" Height="30" Margin="440,135,350,389"/>
+
+        <Label Content="Побочная диагональ" FontSize="16" FontWeight ="Medium" HorizontalContentAlignment="Center" Margin="682,25,22,498" RenderTransformOrigin="0.308,0.601" FontStyle="Italic" />
+        <Label Content="Сумма: " Margin="672,59,207,470" RenderTransformOrigin="1.039,0.201" />
+        <Label Content="Мин: " Margin="672,99,207,432" RenderTransformOrigin="0.268,0.609" />
+        <Label Content="Макс: " Margin="672,135,207,390" />
+
+        <TextBox Name="secondarydiagonal_amount" IsReadOnly="True" Height="30" Margin="743,61,51,463" RenderTransformOrigin="0.683,0.668"/>
+        <TextBox Name="secondarydiagonal_min" IsReadOnly="True" Height="30" Margin="743,98,51,426"/>
+        <TextBox Name="secondarydiagonal_max" IsReadOnly="True" Height="30" Margin="743,135,51,389"/>
+
+        <Label Content="Верхний треугольник" FontSize="16" FontWeight ="Medium" HorizontalContentAlignment="Center" Margin="392,170,317,349" FontStyle="Italic" />
+        <Label Content="Сумма: " Margin="365,205,510,319" RenderTransformOrigin="0.764,0.501" />
+        <Label Content="Мин: " Margin="365,240,510,285" RenderTransformOrigin="0.036,0.483" />
+        <Label Content="Макс: " Margin="365,277,510,247" />
+
+        <TextBox Name="toptriangle_amount" IsReadOnly="True" Height="30" Margin="440,205,350,319"/>
+        <TextBox Name="toptriangle_min" IsReadOnly="True" Height="30" Margin="440,240,350,284"/>
+        <TextBox Name="toptriangle_max" IsReadOnly="True" Height="30" Margin="440,277,350,247"/>
+
+        <Label Content="Нижний треугольник" FontSize="16" FontWeight ="Medium" HorizontalContentAlignment="Center" Margin="682,170,22,349" FontStyle="Italic" />
+        <Label Content="Сумма: " Margin="672,205,207,324" />
+        <Label Content="Мин: " Margin="672,240,207,284" />
+        <Label Content="Макс: " Margin="672,277,207,248" />
+
+        <TextBox Name="bottomtriangle_amount" IsReadOnly="True" Height="30" Margin="743,206,51,318"/>
+        <TextBox Name="bottomtriangle_min" IsReadOnly="True" Height="30" Margin="743,240,51,284"/>
+        <TextBox Name="bottomtriangle_max" IsReadOnly="True" Height="30" Margin="743,277,51,247"/>
+
+        <Label Content="Левый треугольник" FontSize="16" FontWeight ="Medium" HorizontalContentAlignment="Center" Margin="392,310,317,209" FontStyle="Italic" />
+        <Label Content="Сумма: " Margin="365,348,510,177" />
+        <Label Content="Мин: " Margin="365,388,510,140" RenderTransformOrigin="0.564,0.84" />
+        <Label Content="Макс: " Margin="365,422,510,106" />
+
+        <TextBox Name="lefttriangle_amount" IsReadOnly="True" Height="30" Margin="440,351,350,173" RenderTransformOrigin="0.167,0.467"/>
+        <TextBox Name="lefttriangle_min" IsReadOnly="True" Height="30" Margin="440,386,350,138" RenderTransformOrigin="0.493,0.201"/>
+        <TextBox Name="lefttriangle_max" IsReadOnly="True" Height="30" Margin="440,421,350,103" RenderTransformOrigin="-0.442,0.784"/>
+
+        <Label Content="Правый треугольник" FontSize="16" FontWeight ="Medium" HorizontalContentAlignment="Center" Margin="672,310,22,209" FontStyle="Italic" />
+        <Label Content="Сумма: " Margin="672,352,207,174" />
+        <Label Content="Мин: " Margin="672,386,207,143" RenderTransformOrigin="0.784,0.481" />
+        <Label Content="Макс: " Margin="672,422,207,106" />
+
+        <TextBox Name="righttriangle_amount" IsReadOnly="True" Height="30" Margin="743,351,51,173"/>
+        <TextBox Name="righttriangle_min" IsReadOnly="True" Height="30" Margin="743,386,51,138"/>
+        <TextBox Name="righttriangle_max" IsReadOnly="True" Margin="743,421,51,104"/>
+        <Button Content="Выход" HorizontalAlignment="Left" Margin="102,435,0,0" VerticalAlignment="Top" Height="46" Width="147" Click="Out_Click" IsCancel="True" FontWeight="Medium" FontSize="16" FontStyle="Italic"/>
+
+    </Grid>
+</Window>
